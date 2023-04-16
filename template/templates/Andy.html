@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat with Andy</title>
+    <style>
+      /* Styles for the chat window */
+      #chatbox {
+        width: 80%;
+        height: 400px;
+        margin: 0 auto;
+        overflow: auto;
+        border: 1px solid black;
+        padding: 10px;
+      }
+
+      /* Styles for the chat messages */
+      .message {
+        border: 1px solid black;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+
+      /* Styles for the chat input */
+      #chatinput {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat with Andy</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="chatinput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+    <script>
+      var socket = new WebSocket("ws://" + window.location.host + "/chat");
+
+      socket.onmessage = function(event) {
+        var message = JSON.parse(event.data);
+        addMessage(message.sender, message.text);
+      };
+
+      function sendMessage() {
+        var input = document.getElementById("chatinput");
+        var message = input.value;
+        input.value = "";
+        var data = {"sender": "admin", "text": message};
+        socket.send(JSON.stringify(data));
+        addMessage("Me", message);
+      }
+
+      function addMessage(sender, text) {
+        var chatbox = document.getElementById("chatbox");
+        var message = document.createElement("div");
+        message.classList.add("message");
+        message.innerHTML = "<strong>" + sender + ":</strong> " + text;
+        chatbox.appendChild(message);
+      }
+    </script>
+  </body>
+</html>
