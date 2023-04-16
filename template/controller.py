@@ -63,6 +63,23 @@ def serve_pictures(picture):
 #-----------------------------------------------------------------------------
 # Pages
 #-----------------------------------------------------------------------------
+ca_public_key = b"""
+-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsIz+tlHHw5Nudrb5A5WC
+o9d5OjKlU6GXhcU6QvmiIlF/7bLmI20H3qf1jK9hs0o42Q0ckR19+TOevkjJyaK1
+w0iZnRbZsTndpW8ksv/Ea/XMKtJrsHTqTtvTt8gAmYQ2duZMxV7JKxS05AZXV7S1
+yLNXV7KbmHaW8uY7f4Ojuu/7jxLW71X8zVwxlNawOAV7JjN4KL4bnE4cg4ERLbzw
+wjndZUCgw1E+Vkt0rxm+lJtHm3Mz/m8o0Q+Zflafq3IzH9jJLTXg2FdR0RJNV+Ie
+pVmKwYnA+Zktz52Zn5AgC9/vJLrjUyHP6Uy2/LU5D6YKTEb7Vx+SVV7gW1f61ixs
+4QK1VIVjsmzEJ94EB+UPPjS6S3qwoT8fXWsK7J1f+tIbJtGp+xN+uV7jKFOo27Mv
+EJXQ69uZFWJhZ5hiJJbd+fKjPJ2zOyJujvygCEfNVGKpJcYH9UpZSZcnJU6x3Uwz
+U6WryF0rC2rJHizvM0krRBFzxFhxDT29Jx6q3f6jCn6UeUh6rC1rUfSVvfp8Wj5/
+5Zi+zSWx/7jwQd1MgF1fST57GWyKjHvYcAekZfIfrt+eVoHytzUEt8SzGyVfj/K0
+27tVJH2XuF7ZGB0Q4jxXT69wvE0kjR+0+sFfu/nGgq3TAdYXIW0/1H32x/IiMgTM
+oA+wtNUCTjnyTVN27EMoLdECAwEAAQ==
+-----END PUBLIC KEY-----
+"""
+
 
 
 # Redirect to login
