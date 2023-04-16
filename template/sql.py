@@ -1,5 +1,6 @@
 import sqlite3
 
+
 # This class is a simple handler for all of our SQL database actions
 # Practicing a good separation of concerns, we should only ever call 
 # These functions from our models
@@ -33,11 +34,11 @@ class SQLDatabase():
     def commit(self):
         self.conn.commit()
 
-    #-----------------------------------------------------------------------------
-    
+    # -----------------------------------------------------------------------------
+
     # Sets up the database
     # Default admin password
-    def database_setup(self, admin_password ='admin'):
+    def database_setup(self, admin_password='admin'):
 
         # Clear the database if needed
         self.execute("DROP TABLE IF EXISTS Users")
@@ -62,9 +63,10 @@ class SQLDatabase():
         # Add our admin user
         self.add_user('admin', admin_password, admin=1)
         self.add_user('andy', admin_password, admin=0)
-    #-----------------------------------------------------------------------------
+
+    # -----------------------------------------------------------------------------
     # User handling
-    #-----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------
 
     # Add a user to the database
     def add_user(self, username, password, admin=0):
@@ -79,7 +81,7 @@ class SQLDatabase():
         self.commit()
         return True
 
-    #-----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------
 
     # Check login credentials
     def check_credentials(self, username, password):
@@ -96,7 +98,6 @@ class SQLDatabase():
             return True
         else:
             return False
-        
 
     # Function to get a user ID from the database
     def get_user_id(self, username):
@@ -110,7 +111,6 @@ class SQLDatabase():
         else:
             return None
 
-  
     def insert_message(self, sender_id, receiver_id, message):
         # Insert the message into the database
         sql_cmd = """
@@ -124,12 +124,14 @@ class SQLDatabase():
         self.commit()
 
     def get_conversation(user1_id, user2_id):
-    # Connect to the database
+        # Connect to the database
         conn = sqlite3.connect('messages.db')
         c = conn.cursor()
 
         # Get the conversation between the two users
-        c.execute("SELECT message FROM Messages WHERE sender_id = ? AND receiver_id = ? OR sender_id = ? AND receiver_id = ?", (user1_id, user2_id, user2_id, user1_id))
+        c.execute(
+            "SELECT message FROM Messages WHERE sender_id = ? AND receiver_id = ? OR sender_id = ? AND receiver_id = ?",
+            (user1_id, user2_id, user2_id, user1_id))
         result = c.fetchall()
 
         # Close the database connection

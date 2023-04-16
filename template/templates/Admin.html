@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chat with Andy</title>
+    <title>Chat with Admin</title>
     <style>
       /* Styles for the chat window */
       #chatbox {
@@ -30,7 +30,7 @@
     </style>
   </head>
   <body>
-    <h1>Chat with Andy</h1>
+    <h1>Chat with Admin</h1>
     <div id="chatbox"></div>
     <input type="text" id="chatinput" placeholder="Type a message...">
     <button onclick="sendMessage()">Send</button>
@@ -46,9 +46,9 @@
         var input = document.getElementById("chatinput");
         var message = input.value;
         input.value = "";
-        var data = {"sender": "admin", "text": message};
+        var data = {"sender": "andy", "text": message};
         socket.send(JSON.stringify(data));
-        addMessage("admin", message);
+        addMessage("andy", message);
       }
 
       function addMessage(sender, text) {

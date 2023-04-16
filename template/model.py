@@ -33,6 +33,12 @@ def friend():
     '''
     return page_view("Andy")
 
+def friend_admin():
+    '''
+        Admin
+        Returns the view for the Admin page
+    '''
+    return page_view("Admin")
 
 def index():
     '''
@@ -77,8 +83,10 @@ def login_check(username, password):
         err_str = "Incorrect Password"
         login = False
         
-    if login: 
+    if login and username == "admin":
         return page_view("user")
+    if login and username == "andy":
+        return page_view("user_andy")
     else:
         return page_view("invalid", reason=err_str)
 

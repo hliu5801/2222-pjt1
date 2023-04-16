@@ -87,9 +87,13 @@ def get_Andy_controller():
     '''
     return model.friend()
 
-
-
-
+@get('/Admin')
+def get_Admin_controller():
+    '''
+        get_Admin
+        Serves the friend list page for Admin
+    '''
+    return model.friend_admin()
 
 # Display the login page
 @get('/login')
