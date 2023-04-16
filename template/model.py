@@ -10,6 +10,7 @@ import view
 import random
 import sql
 import base64
+import encrypt
 from cryptography.fernet import Fernet
 
 # Generate a 32-byte key that is url-safe
@@ -75,19 +76,19 @@ def login_check(username, password):
     # By default assume good creds
     login = False
 
-    if username=="admin" and password == "123":
+    if username=="admin" and encrypt.ecpt("123") == encrypt.ecpt(password):
         login = True
-    if username != "admin" and password == "123":
+    if username != "admin" and encrypt.ecpt("123") == encrypt.ecpt(password):
         err_str = "Incorrect Username"
-    if username == "admin" and password != "123":
+    if username == "admin" and encrypt.ecpt("123") != encrypt.ecpt(password):
         err_str = "Incorrect Password"
-    if username=="andy" and password == "456":
+    if username=="andy" and encrypt.ecpt("456") == encrypt.ecpt(password):
         login = True
-    if username != "andy" and password == "456":
+    if username != "andy" and encrypt.ecpt("456") == encrypt.ecpt(password):
         err_str = "Incorrect Username"
-    if username == "andy" and password != "456":
+    if username == "andy" and encrypt.ecpt("456") != encrypt.ecpt(password):
         err_str = "Incorrect Password"
-    if username!="admin" and password != "123" and username!="admin" and password != "123":
+    if username!="admin" and encrypt.ecpt("456") != encrypt.ecpt(password) and username!="admin" and encrypt.ecpt("456") != encrypt.ecpt(password):
         err_str = "Incorrect Username"
 
     if login and username == "admin":
