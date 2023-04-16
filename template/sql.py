@@ -46,15 +46,9 @@ class SQLDatabase():
 
         # Create the users table
         self.execute("""CREATE TABLE Users(
-<<<<<<< HEAD
             Id INT,
-            username text,
-            password text,
-=======
-            Id INTEGER PRIMARY KEY,
-            username TEXT,
-            password TEXT,
->>>>>>> 9da04da603890fba8727c92518cd0944a465ee82
+            username varchar(10) not null primary key,
+            password varchar(20),
             admin INTEGER DEFAULT 0
         )""")
 
