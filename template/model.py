@@ -73,16 +73,23 @@ def login_check(username, password):
     '''
 
     # By default assume good creds
-    login = True
+    login = False
 
-    if username != "admin" and username != "andy": # Wrong Username
+    if username=="admin" and password == "123":
+        login = True
+    if username != "admin" and password == "123":
         err_str = "Incorrect Username"
-        login = False
-    
-    if password != "123": # Wrong password
+    if username == "admin" and password != "123":
         err_str = "Incorrect Password"
-        login = False
-        
+    if username=="andy" and password == "456":
+        login = True
+    if username != "andy" and password == "456":
+        err_str = "Incorrect Username"
+    if username == "andy" and password != "456":
+        err_str = "Incorrect Password"
+    if username!="admin" and password != "123" and username!="admin" and password != "123":
+        err_str = "Incorrect Username"
+
     if login and username == "admin":
         return page_view("user")
     if login and username == "andy":
